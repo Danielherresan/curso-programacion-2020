@@ -1,0 +1,6 @@
+Clase 2
+para nombrar variables:
+    si es una variable normal se usa CamelCase
+    si es una variable que no cambia se usa mayusculas y guion bajo, ej: NOMBRE_EMPRESA
+    si es una entrada se pone guion bajo adelante, ej: _edadPersona
+    para poner un input en la siguiente linea: \n al final del mensaje del input
