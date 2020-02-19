@@ -1,5 +1,5 @@
 #codigo primera clase
-nombre = "MHF S.A.A"
+nombre = "MHF S.A.S"
 tiempo = 50
 dinero = 3664433223.99
 empleados = 55
