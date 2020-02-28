@@ -8,11 +8,11 @@ DESP_PELIGRO = "porfavor dirigete inmediatamente a un centro asistencial."
 PRG_PAIS = "Porfavor ingresa tu pais de origen: "
 PRG_TEMP = "Ingresa tu temperatura actual: "
 PAISES_BAN = ["china", "italia", "iran"]
-obsv = "observacion"
-hipo = "hipotermia"
-salud = "buena salud"
-alerta = "alerta"
-peligro = "peligro"
+OBSV = "observacion"
+HIPO = "hipotermia"
+SALUD = "buena salud"
+ALERTA = "alerta"
+PELIGRO = "peligro"
 
 # ENTRADAS 
 _paisUsuario = ""
@@ -25,22 +25,22 @@ estado = ""
 _paisUsuario = input(PRG_PAIS)
 
 if(_paisUsuario in PAISES_BAN):
-    estado = obsv
+    estado = OBSV
     print(MSJ_EST.format(estado), DESP_OBSV)
     exit()
 
 _tempUsuario = float(input(PRG_TEMP))
 
 if(_tempUsuario <= 36):
-    estado = hipo
+    estado = HIPO
     print(MSJ_EST.format(estado), DESP_ALERTA)
 elif(_tempUsuario <= 38.4):
     estado = SALUD
     print(MSJ_EST.format(estado), DESP_NORMAL)
 elif(_tempUsuario <= 40):
-    estado = alerta
+    estado = ALERTA
     print(MSJ_EST.format(estado), DESP_ALERTA)
 else:
-    estado = peligro
+    estado = PELIGRO
     print(MSJ_EST.format(estado), DESP_PELIGRO)
 
