@@ -35,7 +35,7 @@ if(_tempUsuario <= 36):
     estado = hipo
     print(MSJ_EST.format(estado), DESP_ALERTA)
 elif(_tempUsuario <= 38.4):
-    estado = salud
+    estado = SALUD
     print(MSJ_EST.format(estado), DESP_NORMAL)
 elif(_tempUsuario <= 40):
     estado = alerta
