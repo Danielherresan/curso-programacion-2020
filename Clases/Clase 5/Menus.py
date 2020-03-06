@@ -1,6 +1,5 @@
 import time
 import random
-from Funciones_menus import *
 
 # MENSAJES
 MSJ_PGA = "1 - Mostrar nombres \n2 - mostrar edades \n3 - Notas \n4 - Salir \n"
@@ -8,6 +7,23 @@ MSJ_ERR = "El numero que ingresaste no corresponde a una funcion de este program
 MSJ_EDAD = "{} tiene {} años."
 MSJ_NOTA = "{} obtuvo una calificacion de {}."
 MSJ_DESP = "Cuidate.."
+
+# FUNCIONES
+def edades(numPersonas):
+    age = []
+    ind = 0
+    while(ind < numPersonas):
+        age.append(random.randint(16,25))
+        ind += 1
+    return age
+
+def notas(numPersonas):
+    note = []
+    ind = 0
+    while(ind < numPersonas):
+        note.append(round(random.uniform(0, 5), 2))
+        ind += 1
+    return note
 
 # VARIABLES
 _num = 0
