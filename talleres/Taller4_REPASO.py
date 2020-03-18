@@ -15,6 +15,7 @@ FORM_LIST = "{}. {}"
 ERR_RAN = "El numero que ingresaste no corresponde a una funcion de este programa, intetalo de nuevo.\n"
 MSJ_DESP = "Cuidate.."
 
+# FUNCIONES
 def enter():
     print("")
 
@@ -30,18 +31,19 @@ _listaCompras = []
 _age = int(input(PGA_EDAD))
 enter()
 
-if(_age > 60):
-
+if(_age > 60): 
     print(MSJ_60.format(_age))
+
 elif(_age > 30):
-
     print(MSJ_30)
-elif(_age > 17):
 
+elif(_age > 17):
     pass
+
 else:
     print(ERR_EDAD)
     exit()
+
 enter()
 
 _opc = int(input(MSJ_PGA))
@@ -51,12 +53,12 @@ while(_opc not in range(1,5)):
     time.sleep(1.5)
     _opc = int(input(MSJ_PGA))
     
-  
 while(_opc in range(1,5)):
-    
+
     if(_opc == 1):
         _listaCompras.append(input(MSJ_ING_ITEM))      
         _des = input(PGA_ING_ITEM)
+
         while(_des not in CARC):
             print(ERR_LIST)
             _des = input(PGA_ING_ITEM)
@@ -72,8 +74,8 @@ while(_opc in range(1,5)):
             print(FORM_LIST.format(i+1, _listaCompras[i]))
         time.sleep(0.5)
         enter()
+
     elif(_opc == 3):
-        
         _eli = int(input(PGA_ELI))
 
         try:
@@ -81,8 +83,8 @@ while(_opc in range(1,5)):
         except(IndexError):
             print(ERR_INDEX)
             time.sleep(0.5)
-
         enter()
+
     else:
         print(MSJ_DESP)
         exit()
