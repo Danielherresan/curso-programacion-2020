@@ -1,51 +1,82 @@
-import time
 import random
 
 # FUNCIONES
 def enter():
     print("")
 
-def crearLista(nombre, elementos):
-    lista = [nombre]
-    elemList = elementos.split(",")
-    for element in elemList:
-        lista.append(element)
+def printOpciones(formato_de_lista, lista_opciones, msj_volver):
+    indice_opcion_de_volver = 0
 
-    return lista    
+    for i in range(len(lista_opciones)):
+        print(formato_de_lista.format(i+1, lista_opciones[i]))
+        indice_opcion_de_volver = i + 2
+    print(formato_de_lista.format(indice_opcion_de_volver, msj_volver))
 
-def mostrarListas(listas):
-    for i in range(len(listas)):
+    enter()
+
+    return indice_opcion_de_volver
+
+def checkRange(opcion, rango):
+    if(opcion in range(rango)):
+        return True
+    else:
+        return False
+
+def printErrorRango(msj_error_rango):
+    print(msj_error_rango)
+
+def printOpcionesDeLista(formato_de_lista, lista_opciones, msj_volver):
+    indice_opcion_de_volver = 0
+
+    for i in range(len(lista_opciones) - 1):
+        print(formato_de_lista.format(i+1, lista_opciones[i + 1]))
+        indice_opcion_de_volver = i + 2
+    print(formato_de_lista.format(indice_opcion_de_volver, msj_volver))
+
+    enter()
+
+    return indice_opcion_de_volver
+
+def checkListas(listas):
+    if(listas == []):           
+        return False
+    else:
+        return True
+
+def anadirNuevaLista(nombre, elementos, lista_de_listas):
+    nueva_lista = [nombre]
+    lista_de_elementos = elementos.split(",")
+
+    for elemento in lista_de_elementos:
+        nueva_lista.append(elemento)
+
+    lista_de_listas.append(nueva_lista)
+
+def mostrarLista(lista, *punto_de_partida):
+    if (punto_de_partida == ()):
+        for elemento in range(len(lista)):
+            print(lista[elemento])
+
+    else:
+        for elemento in range(len(lista) - punto_de_partida[0]):
+            print(lista[elemento + punto_de_partida[0]])
+
+def mostrarTodasLasListas(lista_de_listas):
+    for lista in range(len(lista_de_listas)):
+        print(lista_de_listas[lista][0] + ":")
+
+        mostrarLista(lista_de_listas[lista], 1)
         enter()
-        time.sleep(0.4)
-        print(listas[i][0] + ":")
-        time.sleep(0.4)
-        for e in range(len(listas[i]) - 1):
-            print(listas[i][e+1]) 
-            time.sleep(0.2)
 
-def estadoDoctores(listaDoctores):
-    choiceDoctores = ["disponible", "operando", "fuera del hospital", "en su descanso"]
-    listEstadoDoc = []
-    x = 0
-    while(x < len(listaDoctores) - 1):
-        listEstadoDoc.append(random.choice(choiceDoctores))
-        x += 1
-    return listEstadoDoc
+def estadoLista(lista_de_doctores, posibles_estados_de_doctores, msj_formato_de_estado):
+    lista_estado_de_doctores = []
+    indice_doctor_actual = 0
 
-def estadoEnfermeros(listaEnfermeros):
-    choiceEnfermeros = ["disponible", "asistiendo una operacion", "cuidando pacientes", "fuera del hospital", "en su descanso"]
-    listEstadoEnf = []
-    x = 0
-    while(x < len(listaEnfermeros) - 1):
-        listEstadoEnf.append(random.choice(choiceEnfermeros))
-        x += 1
-    return listEstadoEnf
+    while(indice_doctor_actual < len(lista_de_doctores) - 1):
+        lista_estado_de_doctores.append(random.choice(posibles_estados_de_doctores))
+        indice_doctor_actual += 1
 
-def estadoPacientes(listaPacientes):
-    choicePacientes = ["en estado critico", "estable", "en coma"]
-    listEstadoPac = []
-    x = 0
-    while(x < len(listaPacientes) - 1):
-        listEstadoPac.append(random.choice(choicePacientes))
-        x += 1
-    return listEstadoPac
+    for i in range(len(lista_estado_de_doctores)):
+        print(msj_formato_de_estado.format(lista_de_doctores[i + 1], lista_estado_de_doctores[i]))
+
+    enter()
