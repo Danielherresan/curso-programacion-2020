@@ -22,9 +22,6 @@ def checkRange(opcion, rango):
     else:
         return False
 
-def printErrorRango(msj_error_rango):
-    print(msj_error_rango)
-
 def printOpcionesDeLista(formato_de_lista, lista_opciones, msj_volver):
     indice_opcion_de_volver = 0
 

@@ -95,7 +95,7 @@ _opcion = int(input()) - 1
 while not checkRange(_opcion, rango_menu_principal): 
     enter()
 
-    printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+    print(ERR_OPCION_FUERA_DE_RANGO)
 
     printOpciones(FORMATO_DE_LISTA, OPCIONES_MENU_PRINCIPAL, MSJS_RETROCEDER[SALIR])
     _opcion = int(input()) - 1
@@ -110,7 +110,7 @@ while checkRange(_opcion, rango_menu_principal):
         while not checkRange(_opcion_submenu_1, rango_submenu_1): 
             enter()
 
-            printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+            print(ERR_OPCION_FUERA_DE_RANGO)
 
             printOpciones(FORMATO_DE_LISTA, OPCIONES_SUBMENU_1, MSJS_RETROCEDER[VOLVER])
             _opcion_submenu_1 = int(input()) - 1
@@ -126,7 +126,7 @@ while checkRange(_opcion, rango_menu_principal):
                 while not checkRange(_opcion_listas_predeterminadas, rango_listas_predeterminadas): 
                     enter()
 
-                    printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+                    print(ERR_OPCION_FUERA_DE_RANGO)
 
                     printOpciones(FORMATO_DE_LISTA, OPCIONES_LISTAS_PREDETERMINADAS, MSJS_RETROCEDER[VOLVER])
                     _opcion_listas_predeterminadas = int(input()) - 1
@@ -167,7 +167,7 @@ while checkRange(_opcion, rango_menu_principal):
                     while not checkRange(_opcion_listas_predeterminadas, rango_menu_principal): 
                         enter()
 
-                        printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+                        print(ERR_OPCION_FUERA_DE_RANGO)
 
                         printOpciones(FORMATO_DE_LISTA, OPCIONES_LISTAS_PREDETERMINADAS, MSJS_RETROCEDER[VOLVER])
                         _opcion_listas_predeterminadas = int(input()) - 1
@@ -198,7 +198,7 @@ while checkRange(_opcion, rango_menu_principal):
             while not checkRange(_opcion_submenu_1, rango_submenu_1): 
                 enter()
 
-                printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+                print(ERR_OPCION_FUERA_DE_RANGO)
 
                 printOpciones(FORMATO_DE_LISTA, OPCIONES_SUBMENU_1, MSJS_RETROCEDER[VOLVER])
                 _opcion_submenu_1 = int(input()) - 1
@@ -216,7 +216,7 @@ while checkRange(_opcion, rango_menu_principal):
             while not checkRange(_opcion_submenu_2, rango_submenu_2): 
                 enter()
 
-                printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+                print(ERR_OPCION_FUERA_DE_RANGO)
 
                 printOpciones(FORMATO_DE_LISTA, OPCIONES_SUBMENU_2, MSJS_RETROCEDER[VOLVER])
                 _opcion_submenu_2 = int(input()) - 1
@@ -233,7 +233,7 @@ while checkRange(_opcion, rango_menu_principal):
                     while not checkRange(_lista_seleccionada_para_anadir, len(nombre_listas_creadas) + 1): 
                         enter()
 
-                        printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+                        print(ERR_OPCION_FUERA_DE_RANGO)
 
                         print(PGA_OPCION_ANADIR)
                         indice_volver = printOpciones(FORMATO_DE_LISTA, nombre_listas_creadas, MSJS_RETROCEDER[VOLVER]) - 1
@@ -265,7 +265,7 @@ while checkRange(_opcion, rango_menu_principal):
                         while not checkRange(_opcion_submenu_2, rango_submenu_2): 
                             enter()
 
-                            printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+                            print(ERR_OPCION_FUERA_DE_RANGO)
 
                             printOpciones(FORMATO_DE_LISTA, OPCIONES_SUBMENU_2, MSJS_RETROCEDER[VOLVER])
                             _opcion_submenu_2 = int(input()) - 1
@@ -310,7 +310,7 @@ while checkRange(_opcion, rango_menu_principal):
                 while not checkRange(_opcion_submenu_2, rango_submenu_2): 
                     enter()
 
-                    printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+                    print(ERR_OPCION_FUERA_DE_RANGO)
 
                     printOpciones(FORMATO_DE_LISTA, OPCIONES_SUBMENU_2, MSJS_RETROCEDER[VOLVER])
                     _opcion_submenu_2 = int(input()) - 1 
@@ -336,7 +336,7 @@ while checkRange(_opcion, rango_menu_principal):
             while not checkRange(_opcion_submenu_3, rango_submenu_3): 
                 enter()
 
-                printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+                print(ERR_OPCION_FUERA_DE_RANGO)
 
                 printOpciones(FORMATO_DE_LISTA, OPCIONES_SUBMENU_3, MSJS_RETROCEDER[VOLVER])
                 _opcion_submenu_3 = int(input()) - 1
@@ -359,7 +359,7 @@ while checkRange(_opcion, rango_menu_principal):
                     while not checkRange(_opcion_mostrar_lista, len(nombre_listas_creadas) + 1): 
                         enter()
 
-                        printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+                        print(ERR_OPCION_FUERA_DE_RANGO)
 
                         print(PGA_MOSTRAR_LISTA)
                         indice_volver = printOpciones(FORMATO_DE_LISTA, nombre_listas_creadas, MSJS_RETROCEDER[VOLVER]) - 1
@@ -384,7 +384,7 @@ while checkRange(_opcion, rango_menu_principal):
                         while not checkRange(_opcion_mostrar_lista, len(nombre_listas_creadas) + 1): 
                             enter()
 
-                            printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+                            print(ERR_OPCION_FUERA_DE_RANGO)
 
                             print(PGA_MOSTRAR_LISTA)
                             indice_volver = printOpciones(FORMATO_DE_LISTA, nombre_listas_creadas, MSJS_RETROCEDER[VOLVER]) - 1
@@ -397,7 +397,7 @@ while checkRange(_opcion, rango_menu_principal):
                 while not checkRange(_opcion_submenu_3, rango_submenu_3): 
                     enter()
 
-                    printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+                    print(ERR_OPCION_FUERA_DE_RANGO)
 
                     printOpciones(FORMATO_DE_LISTA, OPCIONES_SUBMENU_3, MSJS_RETROCEDER[VOLVER])
                     _opcion_submenu_3 = int(input()) - 1 
@@ -424,7 +424,7 @@ while checkRange(_opcion, rango_menu_principal):
             while not checkRange(_lista_seleccionada_para_mostrar_estado, rango_submenu_4): 
                 enter()
 
-                printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+                print(ERR_OPCION_FUERA_DE_RANGO)
 
                 print(PGA_OPCION_MOSTRAR_ESTADO)
                 indice_volver = printOpciones(FORMATO_DE_LISTA, nombre_listas_creadas, MSJS_RETROCEDER[VOLVER]) - 1
@@ -460,6 +460,6 @@ while checkRange(_opcion, rango_menu_principal):
     while not checkRange(_opcion, rango_menu_principal): 
         enter()
 
-        printErrorRango(ERR_OPCION_FUERA_DE_RANGO)
+        print(ERR_OPCION_FUERA_DE_RANGO)
         printOpciones(FORMATO_DE_LISTA, OPCIONES_MENU_PRINCIPAL, MSJS_RETROCEDER[SALIR])
         _opcion = int(input()) - 1    
