@@ -32,6 +32,8 @@ def preguntarPorNuevosPacientes(_input):
     if (_input == 1):
         ingresarEdadNuevoPaciente(_edad_nuevo_paciente)
     elif (_input == 2):
+        lista_ordenada = listaEdades.copy()
+
         print(EDADES_HOY)
         mostrarLista(lista_edades_nuevas)
 
@@ -41,13 +43,12 @@ def preguntarPorNuevosPacientes(_input):
         print(DEMAS_DATOS.format(calcularPromedio(listaEdades), max(listaEdades), min(listaEdades)))
 
         print(ASCENDENTE)
-        
-        listaEdades.sort()
-        mostrarLista(listaEdades)
+        lista_ordenada.sort()
+        mostrarLista(lista_ordenada)
 
         print(DESCENDENTE)
-        listaEdades.sort(reverse = True)
-        mostrarLista(listaEdades)
+        lista_ordenada.sort(reverse = True)
+        mostrarLista(lista_ordenada)
 
         print(AUXILIAR)
         listaEdades.insert(4, 87)
