@@ -1,4 +1,4 @@
-from funciones import *
+from funciones import time, whileLoop, espacio
 
 
 # MENSAJES
