@@ -6,12 +6,10 @@ DICCIONARIO_MENSAJES = {
     'FORMATO': "{} - {}",
     'VOLVER': "Salir"
 }
-
-
 ALTA = "alta"
 BAJA = "baja"
 PGA_NUEVO_PACIENTE = "Ingrese el peso del nuevo paciente:\n"
-OPCIONES_MENU_PRINCIPAL = ["Añadir nuevo pacientes", "Mostrar presiones calculadas", "Mostrar datos"]
+OPCIONES_MENU_PRINCIPAL = ["Añadir nuevo pacientes", "Calcular presiones", "Mostrar datos"]
 PGA_SUBMENU_2 = "¿Deseas ver la lista en orden descendente?"
 OPCIONES_SUBMENU_2 = ["Si", "No"]
 PGA_SUBMENU_3 = "Que dato deseas visualizar:\n"
@@ -21,10 +19,9 @@ FORMATO_DE_LISTAS = "El paciente {} con un peso de {}kg tiene una presion calcul
 FORMATO_DE_PROMEDIO = "En promedio se estan tomando {} datos cada hora."
 FORMATO_DE_PRESION = "El paciente con la presión más {} tiene una presion de {}mm/hg."
 MSJ_DESPEDIDA = "Cuidate, y por tu seguridad quedate en casa..."
+ERR_NO_CALCULO = "Debes calcular las presiones de tus pacientes antes de acceder a los datos."
 
-
-
-
+# VARIABLES
 lista_pesos = [98, 74, 122, 85, 115, 64, 127, 137, 148, 32] # como ya esta en orden la desorganicé
 lista_presiones = []
 rango_menu_principal = 2 + len(OPCIONES_MENU_PRINCIPAL)
@@ -50,6 +47,7 @@ def CalcularPresiones(lista, lista_de_presiones):
         
 def MostrarPresiones(lista, lista_de_presiones, ordenada):
     espacio()
+    CalcularPresiones(lista_pesos, lista_presiones)
 
     if ordenada:
         lista_decresiente = lista_de_presiones.copy()
@@ -112,6 +110,7 @@ def subMenu3(decision):
     else:
         espacio()
         whileLoop(DICCIONARIO_MENSAJES, funcionPrincipal, _decision, rango_menu_principal, OPCIONES_MENU_PRINCIPAL)
+        
 
 def funcionPrincipal(_decision):
     if (_decision == 1):
@@ -129,13 +128,16 @@ def funcionPrincipal(_decision):
 
     elif (_decision == 3):
         espacio()
-        whileLoop(DICCIONARIO_MENSAJES, subMenu3, _decision_submenu_3, rango_submenu_3, OPCIONES_SUBMENU_3) 
+        if (lista_presiones != []):
+            whileLoop(DICCIONARIO_MENSAJES, subMenu3, _decision_submenu_3, rango_submenu_3, OPCIONES_SUBMENU_3) 
+        else:
+            print(ERR_NO_CALCULO)
+            espacio()
 
     else:
         espacio()
         print(MSJ_DESPEDIDA)
         exit()
 
-CalcularPresiones(lista_pesos, lista_presiones)
-
+# CODIGO
 whileLoop(DICCIONARIO_MENSAJES, funcionPrincipal, _decision, rango_menu_principal, OPCIONES_MENU_PRINCIPAL)
