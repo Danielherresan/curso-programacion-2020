@@ -1,6 +1,9 @@
+import time
+
 # FUNCIONES
 def espacio():
     print("")
+    time.sleep(0.3)
 
 def whileLoop(dicionario, funcion_interna, variable_desicion, rango_de_desicion, lista_opciones):
 

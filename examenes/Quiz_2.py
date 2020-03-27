@@ -1,5 +1,6 @@
 from funciones import *
 
+
 # MENSAJES
 DICCIONARIO_MENSAJES = {
     'FUERA DE RANGO': "El número ingresado no corresponde a una función de este programa, por favor intetalo de nuevo.\n",
@@ -57,12 +58,14 @@ def MostrarPresiones(lista, lista_de_presiones, ordenada):
 
         for i in range(len(lista_decresiente)):
             print(FORMATO_DE_LISTAS.format(i + 1, lista_decresiente_pacientes[i], lista_decresiente[i]))
+            time.sleep(0.4)
         
         espacio()
 
     else:   
-        for i in range(len(lista_de_presiones)):
+        for i in range(len(lista)):
             print(FORMATO_DE_LISTAS.format(i + 1, lista[i], lista_de_presiones[i]))
+            time.sleep(0.4)
 
         espacio()
 
