@@ -139,7 +139,8 @@ def mainMenu(_opcion):
 
     elif(_opcion == 4):
 
-        _opcion_submenu_4 = int(input("1 - Dar anuncio\n2 - Contratar"))
+        _opcion_submenu_4 = int(input("1 - Dar anuncio\n2 - Contratar\n\n"))
+        espacio()
 
         if (_opcion_submenu_4 == 1):
             _anuncio = input(PGA_ANUNCIO)
@@ -149,8 +150,12 @@ def mainMenu(_opcion):
             espacio()   
             time.sleep(2)   
         elif (_opcion_submenu_4 == 2):
+            espacio()
             _nombre_nuevo = input("Ingresa el nombre del nuevo empleado:\n")
+
             jefe_1.contratar(_nombre_nuevo)  
+            espacio()
+            time.sleep(2)
         else:
             pass
 
