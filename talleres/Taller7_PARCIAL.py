@@ -7,7 +7,7 @@ DICCIONARIO_MENSAJES = {
     'VOLVER': "Salir"
 }
 
-OPCIONES_MENU_PRINCIPAL = ["Ver canguros", "Alimentar Canguros", "Hacer un anuncio"]
+OPCIONES_MENU_PRINCIPAL = ["Ver canguros", "Ver empleados", "Alimentar Canguros", "Hacer un anuncio"]
 
 MSJ_ALIMENTAR = "{} alimento al canguro {}, hasta ahora {} ha alimentado canguros {} veces"
 MSJ_CONTRATAR = "El Jefe {} ha contratado un nuevo empleado, su nombre es {}"
@@ -101,6 +101,12 @@ def imprimirSaltos(lista):
             time.sleep(0.3)
     espacio()
 
+def mostrarEmpleados(lista):
+    for i in range(len(lista)):
+        print("El cuidador {}, tiene la identificación número {}.".format(lista[i].nombre, lista[i].identificacion))
+        time.sleep(0.3)
+    espacio()
+
 def subMenu2(_opcion):
     espacio()
     if (_opcion in range(rango_submenu_2 - 1)):   
@@ -125,10 +131,13 @@ def mainMenu(_opcion):
         imprimirSaltos(Canguro.instancias)
 
     elif(_opcion == 2):
+        mostrarEmpleados(Cuidador.instancias)
+
+    elif(_opcion == 3):
         print(PGA_CUIDADOR)
         whileLoop(DICCIONARIO_MENSAJES, subMenu2, _opcion_submenu_2, rango_submenu_2, lista_cuidadores)
 
-    elif(_opcion == 3):
+    elif(_opcion == 4):
         _anuncio = input(PGA_ANUNCIO)
         espacio()
 
