@@ -54,9 +54,8 @@ class Jefe(Cuidador):
         self.nombre = Cuidador.nombre
 
     def contratar(self, nombre_nuevo_cuidador):
-        nuevo_empleado = Cuidador(nombre_nuevo_cuidador)
+        Cuidador(nombre_nuevo_cuidador)
         print(MSJ_CONTRATAR.format(self.nombre, nombre_nuevo_cuidador))
-        return nuevo_empleado
 
     def darAnuncio(self, anuncio):
         print(MSJ_ANUNCIO.format(self.nombre, anuncio))
@@ -89,6 +88,7 @@ for i in range(len(Cuidador.instancias)):
 
 _opcion = 0
 _opcion_submenu_2 = 0
+_nombre_nuevo = 0
 
 rango_menu_principal = 2 + len(OPCIONES_MENU_PRINCIPAL)
 rango_submenu_2 = 2 + len(Cuidador.instancias)
@@ -138,12 +138,21 @@ def mainMenu(_opcion):
         whileLoop(DICCIONARIO_MENSAJES, subMenu2, _opcion_submenu_2, rango_submenu_2, lista_cuidadores)
 
     elif(_opcion == 4):
-        _anuncio = input(PGA_ANUNCIO)
-        espacio()
 
-        jefe_1.darAnuncio(_anuncio)
-        espacio()   
-        time.sleep(2)     
+        _opcion_submenu_4 = int(input("1 - Dar anuncio\n2 - Contratar"))
+
+        if (_opcion_submenu_4 == 1):
+            _anuncio = input(PGA_ANUNCIO)
+            espacio()
+
+            jefe_1.darAnuncio(_anuncio)
+            espacio()   
+            time.sleep(2)   
+        elif (_opcion_submenu_4 == 2):
+            _nombre_nuevo = input("Ingresa el nombre del nuevo empleado:\n")
+            jefe_1.contratar(_nombre_nuevo)  
+        else:
+            pass
 
     else:
         print(MSJ_DESP)
