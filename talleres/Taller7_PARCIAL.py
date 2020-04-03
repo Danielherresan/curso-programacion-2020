@@ -7,7 +7,7 @@ DICCIONARIO_MENSAJES = {
     'VOLVER': "Salir"
 }
 
-OPCIONES_MENU_PRINCIPAL = ["Ver canguros", "Ver empleados", "Alimentar Canguros", "Hacer un anuncio"]
+OPCIONES_MENU_PRINCIPAL = ["Ver canguros", "Ver empleados", "Alimentar Canguros", "Opciones de jefe"]
 
 MSJ_ALIMENTAR = "{} alimento al canguro {}, hasta ahora {} ha alimentado canguros {} veces"
 MSJ_CONTRATAR = "El Jefe {} ha contratado un nuevo empleado, su nombre es {}"
