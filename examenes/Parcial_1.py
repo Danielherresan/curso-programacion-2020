@@ -97,6 +97,10 @@ student_5 = Student("eliberto", 17, "masculino", "MONTESSORI", 2)
 
 # Asistir a clase
 student_1.assistClass(3)
+student_2.assistClass(2)
+student_3.assistClass(4)
+student_4.assistClass(0)
+student_5.assistClass(1)
 
 teacher_1 = Teacher("Jilberto", 37, "Masters degree", 4)
 teacher_2 = Teacher("Leon", 29, "Doctoral degree", 5)
@@ -104,6 +108,8 @@ teacher_3 = Teacher("Juan", 35, "PhD", 6)
 
 # Dar clase
 teacher_1.giveLecture(1)
+teacher_2.giveLecture(4)
+teacher_3.giveLecture(2)
 
 principal_1 = Principal(teacher_3)
 
