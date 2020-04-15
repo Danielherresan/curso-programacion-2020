@@ -95,6 +95,8 @@ student_3 = Student("jose", 20, "masculino", "del espiritú santo", 6)
 student_4 = Student("luisa", 23, "femenino", "La Salle", 3)
 student_5 = Student("eliberto", 17, "masculino", "MONTESSORI", 2)
 
+student_1.assistClass(3)
+
 teacher_1 = Teacher("Jilberto", 37, "Masters degree", 4)
 teacher_2 = Teacher("Leon", 29, "Doctoral degree", 5)
 teacher_3 = Teacher("Juan", 35, "PhD", 6)
@@ -185,7 +187,7 @@ def showTeacherForPromotion(_input):
 
         print(MSJ_PRO_SUC.format(Teacher.teacher_object_list[real_input].name))
         espacio()
-        
+
         whileLoop(MSJS_DICC, mainMenu, _option, main_menu_range, MAIN_MENU_OPTIONS)
 
     except(IndexError):
