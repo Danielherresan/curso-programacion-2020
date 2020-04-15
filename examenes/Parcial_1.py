@@ -101,6 +101,8 @@ teacher_1 = Teacher("Jilberto", 37, "Masters degree", 4)
 teacher_2 = Teacher("Leon", 29, "Doctoral degree", 5)
 teacher_3 = Teacher("Juan", 35, "PhD", 6)
 
+teacher_1.giveLecture(1)
+
 principal_1 = Principal(teacher_3)
 
 # Contratacion
