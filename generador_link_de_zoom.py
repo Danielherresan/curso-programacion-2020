@@ -83,19 +83,19 @@ horarios = {
     },
 
     "iygdlc": {
-        "Martes": {"Salon": C303, "Inicio": 1400, "Fin": 1600}
+        "Martes": {"Salon": C303, "Inicio": 1400, "Final": 1600}
     },
 
     "m1": {
-        "Lunes": {"Salon": C310, "Inicio": 1200, "Fin": 1400}
+        "Lunes": {"Salon": C310, "Inicio": 1200, "Final": 1400}
     },
 
     "mys2": {
-        "Miercoles": {"Salon": C313, "Inicio": 900, "Fin": 1100}
+        "Miercoles": {"Salon": C313, "Inicio": 900, "Final": 1100}
     },
 
     "ag": {
-        "Viernes": {"Salon": C314, "Inicio": 900, "Fin": 1100}
+        "Viernes": {"Salon": C314, "Inicio": 900, "Final": 1100}
     }
 }
 
@@ -112,7 +112,7 @@ class Materias():
             if (hora in range(int(self.horario[dia]["Inicio"]), int(self.horario[dia]["Final"]))):
                 return True
             else:
-                return False
+                return False          
         except(KeyError):
             return False
 
@@ -196,7 +196,6 @@ tiempo_actual = darHoraActual()
 dia_de_la_semana = darDiaDeLaSemana()
 lista_de_materias_en_rango = {}
 lista_nombres_de_materias_en_rango = []
-
 lista_materia_seleccionada = []
 
 # ============================================================== CODIGO ============================================================== #
@@ -209,6 +208,7 @@ for materia in range(len(Materias.lista_objetos_materia)):
     try:
         if objeto_materia.revisarRangoHorario(dia_de_la_semana, tiempo_actual):
             lista_materia_seleccionada.append(Materias.lista_objetos_materia[materia])
+            print(nombre_materia_aaaaa)
         else:
             pass
 
