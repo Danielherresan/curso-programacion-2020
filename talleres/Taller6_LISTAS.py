@@ -1,4 +1,4 @@
-from funciones_taller_6 import *
+from Funciones import showList, whileLoop
 
 DICIONARIO_MENSAJES = {
     'FUERA DE RANGO': "El número ingresado no corresponde a una función de este programa, por favor intetalo de nuevo.\n",
@@ -10,7 +10,7 @@ PGA_NUEVO_PACIENTE = "¿ha ingresado algún paciente nuevo el dia de hoy?"
 PGA_EDAD = "Ingrese la edad del nuevo paciente:"
 EDADES_HOY = "Las edades de los pacientes ingresados el dia de hoy son:"
 TODAS_EDADES = "y esta es la lista de todas las edades de los pacientes:"
-DEMAS_DATOS = "La edad promedio es {}, el paciente mas longevo tiene {} años y el mas joven tiene {} años."
+DEMAS_DATOS = "el paciente mas longevo tiene {} años y el mas joven tiene {} años."
 ASCENDENTE = "Lista en orden asendente:\n"
 DESCENDENTE = "Lista en orden descendente:\n"
 AUXILIAR = "la auxiliar la popoció:\n"
@@ -35,28 +35,28 @@ def preguntarPorNuevosPacientes(_input):
         lista_ordenada = listaEdades.copy()
 
         print(EDADES_HOY)
-        mostrarLista(lista_edades_nuevas)
+        showList(lista_edades_nuevas)
 
         print(TODAS_EDADES)
-        mostrarLista(listaEdades)
+        showList(listaEdades)
 
-        print(DEMAS_DATOS.format(calcularPromedio(listaEdades), max(listaEdades), min(listaEdades)))
+        print(DEMAS_DATOS.format(max(listaEdades), min(listaEdades)))
 
         print(ASCENDENTE)
         lista_ordenada.sort()
-        mostrarLista(lista_ordenada)
+        showList(lista_ordenada)
 
         print(DESCENDENTE)
         lista_ordenada.sort(reverse = True)
-        mostrarLista(lista_ordenada)
+        showList(lista_ordenada)
 
         print(AUXILIAR)
         listaEdades.insert(4, 87)
-        mostrarLista(listaEdades)
+        showList(listaEdades)
 
         print(ADIOS_PACIENTE)
         listaEdades.pop(6)
-        mostrarLista(listaEdades)
+        showList(listaEdades)
 
         exit()
     else:

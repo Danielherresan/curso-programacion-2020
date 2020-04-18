@@ -1,5 +1,5 @@
 import random
-from Funciones_taller_7 import *
+from Funciones import whileLoop, enter, time
 
 DICCIONARIO_MENSAJES = {
     'FUERA DE RANGO': "El número ingresado no corresponde a una función de este programa, por favor intetalo de nuevo.\n",
@@ -99,34 +99,34 @@ def imprimirSaltos(lista):
     for i in lista:
             print(MSJ_SALTOS.format(i.identificacion, i.edad, i.saltos))
             time.sleep(0.3)
-    espacio()
+    enter()
 
 def mostrarEmpleados(lista):
     for i in range(len(lista)):
         print("El cuidador {}, tiene la identificación número {}.".format(lista[i].nombre, lista[i].identificacion))
         time.sleep(0.3)
-    espacio()
+    enter()
 
 def subMenu2(_opcion):
-    espacio()
+    enter()
     if (_opcion in range(rango_submenu_2 - 1)):   
         print(PGA_CANGURO)
         for i in range(len(Canguro.instancias)):
             print(FORM_LIST_CANGURO.format(i+1))
-        espacio()
+        enter()
 
         _canguro_seleccionado = int(input()) - 1
-        espacio()
+        enter()
      
         Cuidador.instancias[_opcion - 1].alimentar(Canguro.instancias[_canguro_seleccionado]) 
-        espacio()
+        enter()
         time.sleep(2)
 
     else:
         whileLoop(DICCIONARIO_MENSAJES, mainMenu, _opcion, rango_menu_principal, OPCIONES_MENU_PRINCIPAL)
     
 def mainMenu(_opcion):
-    espacio()
+    enter()
     if (_opcion == 1):
         imprimirSaltos(Canguro.instancias)
 
@@ -140,21 +140,21 @@ def mainMenu(_opcion):
     elif(_opcion == 4):
 
         _opcion_submenu_4 = int(input("1 - Dar anuncio\n2 - Contratar\n\n"))
-        espacio()
+        enter()
 
         if (_opcion_submenu_4 == 1):
             _anuncio = input(PGA_ANUNCIO)
-            espacio()
+            enter()
 
             jefe_1.darAnuncio(_anuncio)
-            espacio()   
+            enter()   
             time.sleep(2)   
         elif (_opcion_submenu_4 == 2):
-            espacio()
+            enter()
             _nombre_nuevo = input("Ingresa el nombre del nuevo empleado:\n")
 
             jefe_1.contratar(_nombre_nuevo)  
-            espacio()
+            enter()
             time.sleep(2)
         else:
             pass

@@ -1,4 +1,4 @@
-from Funciones_taller_5 import *
+from Funciones import time
 
 # MENSAJES
 FORMATO_DE_LISTA = "{} - {}"

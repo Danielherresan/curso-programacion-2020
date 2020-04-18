@@ -1,6 +1,5 @@
 from funciones import time, whileLoop, espacio
 
-
 # MENSAJES
 DICCIONARIO_MENSAJES = {
     'FUERA DE RANGO': "El número ingresado no corresponde a una función de este programa, por favor intetalo de nuevo.\n",
