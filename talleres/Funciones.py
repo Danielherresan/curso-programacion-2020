@@ -1,4 +1,5 @@
 import time
+from pandas import read_csv
 
 # FUNCIONES
 def enter():
@@ -67,3 +68,29 @@ def appendLines(file_name, line):
     new_file.write(corrected_line)
     new_file.close()
     
+# PANDAS Functions
+def readCSV(file_name):
+    file_dicctionary = read_csv(file_name, encoding='UTF-8', header = 0, delimiter=';').to_dict()
+    return file_dicctionary
+
+def minCSV(file_name, key_name, key_arg):
+    file_dicctionary = readCSV(file_name)
+    min_var = ""
+
+    if (key_arg == "length"):    
+        min_var = min(file_dicctionary[key_name].values(), key=len)
+    else:
+        min_var = min(file_dicctionary[key_name].values())
+
+    return min_var
+    
+def maxCSV(file_name, key_name, key_arg):
+    file_dicctionary = readCSV(file_name)
+    max_var = ""
+
+    if (key_arg == "length"):    
+        max_var = max(file_dicctionary[key_name].values(), key=len)
+    else:
+        max_var = max(file_dicctionary[key_name].values())
+
+    return max_var
