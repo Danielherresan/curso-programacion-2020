@@ -1,5 +1,6 @@
+import functions
+import time
 import random
-from Funciones import whileLoop, enter, time
 
 DICCIONARIO_MENSAJES = {
     'FUERA DE RANGO': "El número ingresado no corresponde a una función de este programa, por favor intetalo de nuevo.\n",
@@ -99,34 +100,34 @@ def imprimirSaltos(lista):
     for i in lista:
             print(MSJ_SALTOS.format(i.identificacion, i.edad, i.saltos))
             time.sleep(0.3)
-    enter()
+    functions.enter()
 
 def mostrarEmpleados(lista):
     for i in range(len(lista)):
         print("El cuidador {}, tiene la identificación número {}.".format(lista[i].nombre, lista[i].identificacion))
         time.sleep(0.3)
-    enter()
+    functions.enter()
 
 def subMenu2(_opcion):
-    enter()
+    functions.enter()
     if (_opcion in range(rango_submenu_2 - 1)):   
         print(PGA_CANGURO)
         for i in range(len(Canguro.instancias)):
             print(FORM_LIST_CANGURO.format(i+1))
-        enter()
+        functions.enter()
 
         _canguro_seleccionado = int(input()) - 1
-        enter()
+        functions.enter()
      
         Cuidador.instancias[_opcion - 1].alimentar(Canguro.instancias[_canguro_seleccionado]) 
-        enter()
+        functions.enter()
         time.sleep(2)
 
     else:
-        whileLoop(DICCIONARIO_MENSAJES, mainMenu, _opcion, rango_menu_principal, OPCIONES_MENU_PRINCIPAL)
+        functions.menuLoop(DICCIONARIO_MENSAJES, mainMenu, _opcion, rango_menu_principal, OPCIONES_MENU_PRINCIPAL)
     
 def mainMenu(_opcion):
-    enter()
+    functions.enter()
     if (_opcion == 1):
         imprimirSaltos(Canguro.instancias)
 
@@ -135,26 +136,26 @@ def mainMenu(_opcion):
 
     elif(_opcion == 3):
         print(PGA_CUIDADOR)
-        whileLoop(DICCIONARIO_MENSAJES, subMenu2, _opcion_submenu_2, rango_submenu_2, lista_cuidadores)
+        functions.menuLoop(DICCIONARIO_MENSAJES, subMenu2, _opcion_submenu_2, rango_submenu_2, lista_cuidadores)
 
     elif(_opcion == 4):
 
         _opcion_submenu_4 = int(input("1 - Dar anuncio\n2 - Contratar\n\n"))
-        enter()
+        functions.enter()
 
         if (_opcion_submenu_4 == 1):
             _anuncio = input(PGA_ANUNCIO)
-            enter()
+            functions.enter()
 
             jefe_1.darAnuncio(_anuncio)
-            enter()   
+            functions.enter()   
             time.sleep(2)   
         elif (_opcion_submenu_4 == 2):
-            enter()
+            functions.enter()
             _nombre_nuevo = input("Ingresa el nombre del nuevo empleado:\n")
 
             jefe_1.contratar(_nombre_nuevo)  
-            enter()
+            functions.enter()
             time.sleep(2)
         else:
             pass
@@ -163,5 +164,5 @@ def mainMenu(_opcion):
         print(MSJ_DESP)
         exit()
 
-whileLoop(DICCIONARIO_MENSAJES, mainMenu, _opcion, rango_menu_principal, OPCIONES_MENU_PRINCIPAL)
+functions.menuLoop(DICCIONARIO_MENSAJES, mainMenu, _opcion, rango_menu_principal, OPCIONES_MENU_PRINCIPAL)
     

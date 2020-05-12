@@ -1,4 +1,9 @@
-from Funciones import time
+import os
+import sys
+functions_path = os.path.join(os.getcwd(), "/funciones/")
+sys.path.insert(functions_path)
+
+import funciones
 
 # MENSAJES
 FORMATO_DE_LISTA = "{} - {}"
