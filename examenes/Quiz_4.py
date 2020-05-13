@@ -8,8 +8,7 @@ from funcs import readCSV, makePlot
 invetario = readCSV("inventario.csv")
 ppg = readCSV("ppg.csv")
 
-print(invetario)
-
+# BARRA
 makePlot(
     file=__file__,
     type="bar",
@@ -61,6 +60,7 @@ makePlot(
     ]
 )
 
+# PPG
 makePlot(
     file=__file__,
     type="plot",
@@ -80,6 +80,7 @@ makePlot(
 
 print("Se ven nueve picos en el ppg")
 
+# PIE
 makePlot(
     file=__file__,
     type="pie",
