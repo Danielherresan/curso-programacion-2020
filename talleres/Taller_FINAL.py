@@ -82,6 +82,24 @@ def createPlot(plot_type, plot_title, file_name, rotate_ticks, x_axis, y_axis, *
         messagebox.showerror(ERROR_MESSAGEBOX_TITLES["createPlot"], message)
         return False
 
+def makeInputs(parent, layout):
+    for element in range(len(layout)):
+        element_type = layout[element][0]
+
+        if (element_type == "title"):
+            Label(parent, text=layout[element][1], font =("Arial", 14)).grid(row=element, column=0, columnspan=2 ,padx=14, pady=6)
+
+        elif (element_type == "subTitle"):
+            Label(parent, text=layout[element][1], font =("Arial", 12)).grid(row=element, column=0, columnspan=2 ,padx=14, pady=6)
+
+        elif (element_type == "entry"):
+            Label(parent, text=layout[element][1], font =("Arial")).grid(row=element, column=0, sticky=W, padx=14, pady=6)
+            Entry(parent, width=40, textvariable=layout[element][2], font =("Arial")).grid(row=element, column=1, sticky=W, padx=14, pady=6)
+
+        else:
+            Label(parent, text=layout[element][1], font =("Arial")).grid(row=element, column=0, sticky=W, padx=14, pady=6)
+            Checkbutton(parent, onvalue=True, offvalue=False, variable=layout[element][2]).grid(row=element, column=1, sticky=W, padx=14, pady=6)
+
 def optionsWindow(csv, file_name, plot_type, parent):
     optionsTopLevel = Toplevel(parent)
     optionsTopLevel.wm_title(WINDOW_TITLES["optionsWindow"])
@@ -101,84 +119,85 @@ def optionsWindow(csv, file_name, plot_type, parent):
     _rotate_ticks = BooleanVar()
     _rotate_graph = BooleanVar()
 
-    Label(optionsTopLevel, text="Archivo", font =("Arial", 14)).grid(row=1, column=1, columnspan=2 ,padx=14, pady=6)
+    complete_layout = []
 
-    Label(optionsTopLevel, text="Nombre del archivo: ").grid(row=2,column=1, sticky=W, padx=14, pady=6)
-    Entry(optionsTopLevel, width=40, textvariable=_save_name).grid(row=2, column=2, sticky=W, padx=14, pady=6)
+    file_options = [
+        ["title", "Archivo"],
+        ["entry", "Nombre del archivo: ", _save_name],
+        ["entry", "Titulo de la grafica: ", _plot_title]
+    ]
 
-    Label(optionsTopLevel, text="Titulo de la grafica: ").grid(row=3,column=1, sticky=W, padx=14, pady=6)
-    Entry(optionsTopLevel, width=40, textvariable=_plot_title).grid(row=3, column=2, sticky=W, padx=14, pady=6)
+    pie_specific_options = [
+        ["title", "Secciones"],
+        ["subTitle", "Separadas por comas (,)"],
+        ["entry", "Nombres de las secciones: ", _section_name],
+        ["entry", "Tamaño de las secciones (%): ", _section_size],
+        ["entry", "Explotar secciones: ", _section_explode]
+    ]
+
+    regular_options = [
+        ["title", "Ejes de la grafica"],
+        ["subTitle", "Nombres"],
+        ["entry", "Nombre del eje X: ", _x_name],
+        ["entry", "Nombre del eje Y: ", _y_name],
+        ["subTitle", "Valores (campo del csv)"],
+        ["entry", "Valor del eje X: ", _x_value],
+        ["entry", "Valor(es) del eje Y: ", _y_value]
+    ]
+
+    other_options = [
+        ["title", "Otros (Opcional)"],
+        ["entry", "Tamaño en pulgadas (altura, ancho): ", _graph_size],
+        ["checkBox", "Rotar ticks de X: ", _rotate_ticks]
+    ]
+
+    rotate_graph_option = ["checkBox", "Grafico horizontal: ", _rotate_graph]
 
     if (plot_type == "pie"):
-        Label(optionsTopLevel, text="Secciones de la grafica", font =("Arial", 14)).grid(row=4, column=1, columnspan=2 ,padx=14, pady=6)
-        Label(optionsTopLevel, text="separadas por comas (,)", font =("Arial", 12)).grid(row=5, column=1, columnspan=2 ,padx=14, pady=6)
+        type_specific_options = pie_specific_options
 
-        Label(optionsTopLevel, text="Nombres de las secciones: ").grid(row=6,column=1, sticky=W, padx=14, pady=6)
-        Entry(optionsTopLevel, width=40, textvariable=_section_name).grid(row=6, column=2, sticky=W, padx=14, pady=6)
-
-        Label(optionsTopLevel, text="Tamaño de las secciones (%): ").grid(row=7,column=1, sticky=W, padx=14, pady=6)
-        Entry(optionsTopLevel, width=40, textvariable=_section_size).grid(row=7, column=2, sticky=W, padx=14, pady=6)
-
-        Label(optionsTopLevel, text="Explotar secciones: ").grid(row=8,column=1, sticky=W, padx=14, pady=6)
-        Entry(optionsTopLevel, width=40, textvariable=_section_explode).grid(row=8, column=2, sticky=W, padx=14, pady=6)
+    elif (plot_type == "bar"):
+        type_specific_options = regular_options
+        other_options.append(rotate_graph_option)
 
     else:
-        Label(optionsTopLevel, text="Ejes de la grafica", font =("Arial", 14)).grid(row=4, column=1, columnspan=2 ,padx=14, pady=6)
-        Label(optionsTopLevel, text="Nombres", font =("Arial", 12)).grid(row=5, column=1, columnspan=2 ,padx=14, pady=6)
+        type_specific_options = regular_options
 
-        Label(optionsTopLevel, text="Nombre del eje X: ").grid(row=6,column=1, sticky=W, padx=14, pady=6)
-        Entry(optionsTopLevel, width=40, textvariable=_x_name).grid(row=6, column=2, sticky=W, padx=14, pady=6)
+    complete_layout = file_options + type_specific_options + other_options
 
-        Label(optionsTopLevel, text="Nombre del eje Y: ").grid(row=7,column=1, sticky=W, padx=14, pady=6)
-        Entry(optionsTopLevel, width=40, textvariable=_y_name).grid(row=7, column=2, sticky=W, padx=14, pady=6)
+    makeInputs(optionsTopLevel, complete_layout)
+    
 
-        Label(optionsTopLevel, text="Valores", font =("Arial", 12)).grid(row=8, column=1, columnspan=2 ,padx=14, pady=6)
-        Label(optionsTopLevel, text="Ingresa el nombre del campo del csv", font =("Arial", 10)).grid(row=9, column=1, columnspan=2 ,padx=14, pady=6)
-
-        Label(optionsTopLevel, text="Valor del eje X: ").grid(row=10,column=1, sticky=W, padx=14, pady=6)
-        Entry(optionsTopLevel, width=40, textvariable=_x_value).grid(row=10, column=2, sticky=W, padx=14, pady=6)
-
-        Label(optionsTopLevel, text="Valor(es) del eje Y: ").grid(row=11,column=1, sticky=W, padx=14, pady=6)
-        Entry(optionsTopLevel, width=40, textvariable=_y_value).grid(row=11, column=2, sticky=W, padx=14, pady=6)
-
-    Label(optionsTopLevel, text="Otros (Opcional)", font =("Arial", 14)).grid(row=12, column=1, columnspan=2 ,padx=14, pady=6)
-
-    Label(optionsTopLevel, text="Tamaño en pulgadas (altura, ancho): ").grid(row=13,column=1, sticky=W, padx=14, pady=6)
-    Entry(optionsTopLevel, width=40, textvariable=_graph_size).grid(row=13, column=2, sticky=W, padx=14, pady=6)
-
-    Label(optionsTopLevel, text="Rotar ticks de X: ").grid(row=14,column=1, sticky=W, padx=14, pady=6)
-    Checkbutton(optionsTopLevel, onvalue=True, offvalue=False, variable=_rotate_ticks).grid(row=14, column=2, sticky=W, padx=14, pady=6)
-
-    if (plot_type == "bar"):
-        Label(optionsTopLevel, text="Grafico horizontal: ").grid(row=15,column=1, sticky=W, padx=14, pady=6)
-        Checkbutton(optionsTopLevel, onvalue=True, offvalue=False, variable=_rotate_graph).grid(row=15, column=2, sticky=W, padx=14, pady=6)
-
-    def setOptions(plot_type):
+    def verifyInputs():
         graph_size_elements = _graph_size.get().split(",")
         y_value_elements = _y_value.get().split(",")
         section_element_names = _section_name.get().split(",")
         section_element_sizes = _section_size.get().split(",")
         section_elements_explode = _section_explode.get().split(",")
 
+        save_name = _save_name.get()
+        plot_title = _plot_title.get()
+        rotate_ticks = _rotate_ticks.get()
+        rotate_graph = _rotate_graph.get()
+
         size = []
         sections = []
         x_axis = []
         y_axis = []
 
-        plot_title = _plot_title.get()
-        rotate_ticks = _rotate_ticks.get()
+        if (rotate_graph):
+            real_plot_type = "barh"
+        else:
+            real_plot_type = plot_type
 
-        if (_rotate_graph.get()):
-            plot_type = "barh"
-
-        if (_save_name.get() == ""):
+        if (save_name == ""):
             save_name = file_name
 
         for element in graph_size_elements:
             if (element != ""):
                 size.append(int(element))
         
-        if (plot_type == "pie"):
+        if (real_plot_type == "pie"):
             if (len(section_element_names) == len(section_element_sizes) and len(section_element_sizes) == len(section_elements_explode)):
                 for element in range(len(section_element_names)):
                     try:
@@ -187,11 +206,13 @@ def optionsWindow(csv, file_name, plot_type, parent):
                             "size": int(section_element_sizes[element]),
                             "explode": float(section_elements_explode[element])
                         })
+
                     except ValueError as e:
                         exception_string = str(e)
 
                         if ("int" in exception_string):
                             message = "El tamaño de las secciones debe ser un valor de número entero, no un {}.".format(type(section_element_sizes[element]).__name__)
+
                         elif ("float" in exception_string):
                             message = "El nivel de explosión de las secciones debe ser un valor de número decimal, no un {}.".format(type(section_element_sizes[element]).__name__)
                             
@@ -233,7 +254,7 @@ def optionsWindow(csv, file_name, plot_type, parent):
                 return False
 
         createPlot(
-            plot_type,
+            real_plot_type,
             plot_title,
             save_name,
             rotate_ticks,
@@ -244,7 +265,7 @@ def optionsWindow(csv, file_name, plot_type, parent):
             sections=sections
         )
 
-    Button(optionsTopLevel, text="Aceptar", width=34, command=lambda: setOptions(plot_type)).grid(row=16, column=1, columnspan=2, pady=16)
+    Button(optionsTopLevel, text="Aceptar", width=34, command=verifyInputs).grid(row=16, column=1, columnspan=2, pady=16)
 
 def typeWindow(csv, file_name, parent):
     typeTopLevel = Toplevel(parent)
