@@ -73,7 +73,7 @@ def appendLines(file_name, line):
 # ============================================================================ CSV File Handling ============================================================================ #
 
 def readCSV(file_name):
-    file_path = "{}/assets/csv/{}".format(os.getcwd(), file_name)
+    file_path = "{}/assets/csv/{}.csv".format(os.getcwd(), file_name)
     file_dicctionary = pandas.read_csv(file_path, encoding='UTF-8', header = 0, delimiter=';').to_dict()
     return file_dicctionary
 
@@ -151,9 +151,10 @@ def makePlot(file, type = "plot", title = "title", x_axis = ["label", None], y_a
 
     # Check if the size argument was given
     try:
-        figure = pyplot.gcf()
-        figure.set_size_inches(kwargs["size"])
-    except (KeyError):
+        if (kwargs["size"]):
+            figure = pyplot.gcf()
+            figure.set_size_inches(kwargs["size"])
+    except KeyError:
         pass
 
     # save
@@ -253,7 +254,7 @@ makePlot(
     size=[7,7],
     legend=[
             "Dolar en Pesos colombianos",
-            "Dola en Soles",
+            "Dolar en Soles",
             "Dolar en pesos mexicanos"
     ],
     x_axis = [

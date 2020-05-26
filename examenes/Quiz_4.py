@@ -5,8 +5,8 @@ import sys
 sys.path.append(os.getcwd() + "/functions/")
 from funcs import readCSV, makePlot
 
-invetario = readCSV("inventario.csv")
-ppg = readCSV("ppg.csv")
+invetario = readCSV("inventario")
+ppg = readCSV("ppg")
 
 # BARRA
 makePlot(
